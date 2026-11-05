@@ -1,0 +1,633 @@
+
+@import url(styles/global.css);
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    display: flow-root;
+    height: 100vh;
+    margin: 0;
+    padding-top: 76px;
+    
+    color: var(--content-primary);
+    background-color: var(--background-primary);
+    
+    background-image:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.9) 22.656%, rgba(0, 0, 0, 0.54) 100%),
+        url("assets/shape-pattern.png");
+    
+    background-position: top left, top left;
+    
+    background-size: auto, 275px 275px;
+    
+    background-repeat: repeat, repeat;
+    
+    background-attachment: fixed, fixed;
+}
+
+
+button,
+input {
+    font: inherit;
+}
+
+
+.site-header {
+    position: relative;
+    left: calc((100vw - 100%) / 2);
+    display: flex;
+    
+    align-items: center;
+    width: min(1126px, calc(100vw - 48px));
+    margin: 0 auto;
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+
+.brand-mark {
+    display: flex;
+    flex: 0 0 38px;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 2px;
+}
+
+
+.brand-mark img {
+    display: block;
+    width: 34px;
+    height: 34px;
+}
+
+
+.brand-name {
+    color: var(--content-primary);
+    font-family: "Sora", sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+}
+
+
+.main-layout {
+    position: relative;
+    left: calc((100vw - 100%) / 2);
+    display: grid;
+    
+    grid-template-areas:
+        "intro tool"
+        "faq tool";
+    
+    grid-template-columns: minmax(0, 508fr) minmax(0, 482fr);
+    grid-template-rows: auto auto;
+    column-gap: 108px;
+    row-gap: 38px;
+    width: min(1098px, calc(100vw - 48px));
+    margin: 89px auto 0;
+}
+
+
+.hero-intro {
+    grid-area: intro;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 224px;
+    min-width: 0;
+    text-transform: uppercase;
+}
+
+
+.eyebrow {
+    width: 100%;
+    margin: 0;
+    background-image: linear-gradient(90deg, var(--content-secondary), var(--background-gray));
+    background-clip: text;
+    color: transparent;
+    font-family: "Roboto Mono", monospace;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    -webkit-background-clip: text;
+}
+
+
+.page-title {
+    width: 100%;
+    margin: 0;
+    color: var(--content-primary);
+    font-family: "Sora", sans-serif;
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.04em;
+}
+
+
+.tool-panel {
+    grid-area: tool;
+    align-self: center;
+    width: 100%;
+    min-width: 0;
+}
+
+
+.draw-form,
+.draw-results {
+    width: 100%;
+}
+
+
+.draw-form[hidden] {
+    display: none;
+}
+
+
+.draw-form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+
+.form-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+
+.form-title {
+    margin: 0;
+    color: var(--content-primary);
+    font-family: "Roboto Flex", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+
+.form-description {
+    margin: 0;
+    color: var(--content-secondary);
+    font-family: "Roboto Flex", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+
+.form-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.number-fields {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.number-field {
+    display: flex;
+    flex: 0 0 86px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 86px;
+}
+
+
+.number-field label {
+    width: 100%;
+    color: var(--content-secondary);
+    font-family: "Roboto Flex", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+.number-field input {
+    width: 100%;
+    height: 56px;
+    padding: 3px 8px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 8px;
+    outline: none;
+    color: var(--content-primary);
+    background-color: var(--background-secondary);
+    font-family: "Sora", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+
+.number-field input::-webkit-inner-spin-button,
+.number-field input::-webkit-outer-spin-button {
+    margin: 0;
+    appearance: none;
+}
+
+
+.number-field input:focus-visible {
+    border-color: var(--content-brand);
+    outline: 2px solid var(--content-brand);
+    outline-offset: 2px;
+}
+
+
+.repeat-option {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+
+.repeat-option-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+
+.repeat-option-switch {
+    position: relative;
+    flex: 0 0 30px;
+    width: 30px;
+    height: 20px;
+}
+
+
+.repeat-option-state {
+    position: absolute;
+    display: none;
+    width: 31px;
+    height: 22px;
+}
+
+
+.repeat-option-state--active {
+    top: -1px;
+    left: 0;
+}
+
+
+.repeat-option-state--default {
+    top: -1px;
+    left: -1px;
+}
+
+
+.repeat-option-input:checked + .repeat-option-switch .repeat-option-state--active,
+.repeat-option-input:not(:checked) + .repeat-option-switch .repeat-option-state--default {
+    display: block;
+}
+
+
+.repeat-option-input:focus-visible + .repeat-option-switch {
+    outline: 2px solid var(--content-brand);
+    outline-offset: 3px;
+    border-radius: 12px;
+}
+
+
+.repeat-option-label {
+    color: var(--content-primary);
+    font-family: "Roboto Flex", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+
+.action-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 56px;
+    padding: 16px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 8px;
+    color: var(--content-primary);
+    background-color: var(--background-tertiary);
+    font-family: "Roboto Flex", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
+.action-button img {
+    display: block;
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+}
+
+
+.action-button:focus-visible {
+    outline: 2px solid var(--content-brand);
+    outline-offset: 3px;
+}
+
+
+.action-button[hidden] {
+    display: none;
+}
+
+
+.draw-results.is-animating .action-button--again {
+    display: none;
+}
+
+
+.draw-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+}
+
+
+.draw-results[hidden] {
+    display: none;
+}
+
+
+.results-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+
+.results-heading h2 {
+    margin: 0;
+    color: var(--content-primary);
+    font-family: "Roboto Flex", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+
+.results-heading p {
+    margin: 0;
+    color: var(--content-secondary);
+    font-family: "Roboto Mono", monospace;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+
+.result-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+.result-numbers li {
+    width: 84px;
+    height: 100px;
+}
+
+
+.result-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 100px;
+    border-radius: 28px;
+    color: var(--content-brand);
+    font-family: "Roboto Mono", monospace;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+
+.action-button--again {
+    color: var(--content-tertiary);
+}
+
+
+.faq {
+    grid-area: faq;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    width: 386px;
+    max-width: 100%;
+}
+
+
+.faq-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+
+.faq-icon {
+    display: block;
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+}
+
+
+.faq-copy {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-family: "Roboto Flex", sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+
+.faq-copy h2,
+.faq-copy p {
+    margin: 0;
+}
+
+
+.faq-copy h2 {
+    color: var(--content-brand);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.faq-copy p {
+    color: var(--content-secondary);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+@media (min-width: 1001px) and (max-width: 1145px) {
+    .main-layout {
+        column-gap: clamp(32px, calc((100vw - 1000px) * 0.65), 108px);
+    }
+}
+
+
+@media (max-width: 1000px) {
+    body {
+        height: 100vh;
+        padding-top: 44px;
+    }
+
+    .site-header {
+        justify-content: center;
+    }
+
+    
+    .main-layout {
+        grid-template-areas:
+            "intro"
+            "tool"
+            "faq";
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto auto;
+        row-gap: 42px;
+        width: min(508px, calc(100vw - 64px));
+        margin-top: 46px;
+    }
+
+    
+    .hero-intro {
+        min-height: 0;
+    }
+
+    
+    .faq {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .site-header {
+        width: calc(100% - 48px);
+    }
+
+    .main-layout {
+        row-gap: 42px;
+        width: min(319px, calc(100vw - 48px));
+    }
+
+    .hero-intro {
+        gap: 8px;
+    }
+
+    .page-title {
+        font-size: 40px;
+        letter-spacing: -0.04em;
+    }
+
+    
+    .form-description {
+        color: var(--content-tertiary);
+        font-size: 14px;
+    }
+
+    .form-description::first-letter {
+        text-transform: uppercase;
+    }
+
+    
+    .faq {
+        margin-top: 38px;
+    }
+
+    
+    .main-layout:has(.draw-results:not([hidden])) {
+        row-gap: 70px;
+    }
+
+    .main-layout:has(.draw-results:not([hidden])) .faq {
+        margin-top: 0;
+    }
+}
+
+
+@media (max-width: 350px) {
+    .number-fields {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .number-field {
+        width: 100%;
+        min-width: 0;
+        flex-basis: auto;
+    }
+}
+
+
+@media (max-width: 300px) {
+    .main-layout {
+        width: calc(100vw - 32px);
+    }
+
+    .page-title {
+        font-size: clamp(2rem, 14vw, 2.5rem);
+    }
+
+    .number-field input {
+        font-size: 28px;
+    }
+}
