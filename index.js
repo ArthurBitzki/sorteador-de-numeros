@@ -19,6 +19,9 @@ const DRAW_ANIMATION_INTERVAL = 60;
 let currentResults = [];
 let animationTimerId = null;
 let isDrawing = false;
+let completedDrawCount = 0;
+
+resultIndex.hidden = true;
 
 drawForm.noValidate = true;
 
@@ -188,6 +191,9 @@ function finishDraw() {
     }
 
     renderResults(currentResults);
+    completedDrawCount += 1;
+    resultIndex.textContent = String(completedDrawCount);
+    resultIndex.hidden = completedDrawCount < 2;
     drawResults.classList.remove("is-animating");
     drawResults.removeAttribute("aria-busy");
     drawAgainButton.hidden = false;
@@ -244,7 +250,6 @@ function startDraw() {
 
     currentResults = generateDrawResults(configuration);
     isDrawing = true;
-    resultIndex.textContent = "1º resultado";
     animateResults(configuration);
 }
 
