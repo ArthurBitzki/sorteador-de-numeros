@@ -6,6 +6,7 @@ const drawResults = document.querySelector("#draw-results");
 const resultList = document.querySelector("#result-numbers");
 const resultIndex = document.querySelector("#result-index");
 const drawAgainButton = document.querySelector("#draw-again-button");
+const adjustParameterButton = document.querySelector("#adjust-parameter-button");
 
 const initialResultOutputs = [
     document.querySelector("#result-number-1"),
@@ -197,6 +198,7 @@ function finishDraw() {
     drawResults.classList.remove("is-animating");
     drawResults.removeAttribute("aria-busy");
     drawAgainButton.hidden = false;
+    adjustParameterButton.hidden = false;
     isDrawing = false;
 }
 
@@ -253,12 +255,35 @@ function startDraw() {
     animateResults(configuration);
 }
 
+function resetDrawConfiguration() {
+    drawForm.reset();
+    [drawQuantityInput, drawMinimumInput, drawMaximumInput].forEach((input) => {
+        input.setCustomValidity("");
+    });
+    document.querySelector("#avoid-repeat").checked = false;
+
+    currentResults = [];
+    completedDrawCount = 0;
+    resultIndex.textContent = "";
+    resultIndex.hidden = true;
+    renderResults(currentResults);
+
+    drawAgainButton.hidden = true;
+    adjustParameterButton.hidden = true;
+    drawResults.hidden = true;
+    drawResults.classList.remove("is-animating");
+    drawResults.removeAttribute("aria-busy");
+    drawForm.hidden = false;
+    isDrawing = false;
+}
+
 drawForm.addEventListener("submit", (event) => {
     event.preventDefault();
     startDraw();
 });
 
 drawAgainButton.addEventListener("click", startDraw);
+adjustParameterButton.addEventListener("click", resetDrawConfiguration);
 
 [drawQuantityInput, drawMinimumInput, drawMaximumInput].forEach((input) => {
     input.addEventListener("input", () => input.setCustomValidity(""));
